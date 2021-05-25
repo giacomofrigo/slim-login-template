@@ -1,6 +1,7 @@
 <?php
 namespace App\Middleware;
 
+use App\Exception\AccessForbiddenException;
 use App\Exception\NotLoggedInException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
@@ -25,7 +26,7 @@ final class AuthMiddleware{
             return $response;
         }
         else{
-            throw new NotLoggedInException();
+            throw new AccessForbiddenException();
         }    
     }
 
