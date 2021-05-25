@@ -3,12 +3,11 @@
 namespace App\Exception;
 
 use App\Exception\BaseException;
-use Psr\Container\ContainerInterface;
 
-final class NotLoggedInException extends BaseException
+final class AccessForbiddenException extends BaseException
 {
     public function __construct(
-        string $message = "Login required", 
+        string $message = "You are not allowed to access this resource", 
         int $returncode = 403,
         array $errors = []
     ){
