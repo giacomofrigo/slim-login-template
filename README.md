@@ -1,6 +1,8 @@
 # slim-login-template
 A simple, ready to use Slim 4 login template.
 This template is based on PHP Slim 4 Framework, Doctrine ORM and PHP-DI/Slim-Bridge.
+
+**The template is not finished yet. It's my first look at PHP Slim Framework. For every fix or advice every PR is welcome.**
 # Installation
 Dowload this repository and run:
 ```
@@ -46,4 +48,5 @@ In order to test you can simply run:
 ```
 composer start
 ```
-
+# License
+MIT
