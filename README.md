@@ -9,12 +9,14 @@ composer install
 This command will download and install all the project dependecies.
 
 # Project structure
-The `public/index.php` file which is the only public file, simply execute the `bootstrap.php` file where the application is initialized.
-The `config/settings.php` file contains some useful settings that can be customized (i.e. logger settings).
+The `public/index.php` file which is the only public file, simply includes the `bootstrap.php` file where the application is initialized.
+The `config/settings.php` contains the application settings. Some of them are loaded from env variables, some others (no sensible information etc..) are hard coded (i.e. logger settings).
+
+The settings and some other application dependencies are loaded in the PHP/DI container in the `config/container.php` file.
 
 The routes are specified in the `config/routes.php` file. The routes simply redirect the request to the correct handler.
-Routes handlers are specified inside controllers. Controllers perform actions like args check and then called the needed methods defined inside 
-the services. The services actually communicate with the database and their role is to retrieve or store data on the database.
+Routes handlers are specified inside controllers. Controllers perform actions like args checks and then they call the needed methods defined inside 
+the services. The services communicate with the database.
 
 # Database
 This template uses a MySQL database and Doctrine ORM in order to achieve data persistance.
