@@ -3,6 +3,9 @@
 
 
 // Should be set to 0 in production
+
+use App\Exception\SettingsErrorException;
+
 error_reporting(E_ALL);
 
 // Should be set to '0' in production
@@ -19,6 +22,15 @@ $settings['root'] = dirname(__DIR__);
 $settings['temp'] = $settings['root'] . '/tmp';
 $settings['public'] = $settings['root'] . '/public';
 
+if (isset($_ENV["APP_NAME"]))
+    $settings['app-name'] = $_ENV["APP_NAME"];
+else
+    $settings['app-name'] = "";
+
+if (isset($_ENV["APP_VERSION"]))
+    $settings['app-version'] = $_ENV["APP_VERSION"];
+else
+    $settings['app-version'] = "";
 
 // Error Handling Middleware settings
 $settings['error'] = [
@@ -37,6 +49,10 @@ $settings['error'] = [
 
 
 // doctrine settings
+if (!(isset($_ENV['MYSQL_HOST'], $_ENV['MYSQL_PORT'], $_ENV['MYSQL_DBNAME'], $_ENV['MYSQL_USER'], $_ENV['MYSQL_PASSWORD'])))
+    throw new SettingsErrorException("settings error", 500, ["unable to get db settings from .env file"]);
+
+
 $settings['doctrine'] = [
     'meta' => [
         'entity_path' => [ $settings['root'] . '/src/Entity' ],
@@ -53,6 +69,8 @@ $settings['doctrine'] = [
         'password' => $_ENV['MYSQL_PASSWORD']
     ]
 ];
+
+
 
 
 // Logger settings

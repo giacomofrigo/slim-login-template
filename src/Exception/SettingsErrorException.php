@@ -5,14 +5,15 @@ namespace App\Exception;
 use RuntimeException;
 use Throwable;
 
-class SettingsErrorException extends RuntimeException{
+class SettingsErrorException extends BaseException
+{
     public function __construct(
-        string $message, 
-        int $returncode,
-        array $errors = [], 
-        Throwable $previous = null
+        string $message = "settings error", 
+        int $returncode = 403,
+        array $errors = []
     ){
-        parent::__construct($message, $returncode, $previous);
+        parent::__construct($message, $returncode, $errors);
 
     }
+
 }

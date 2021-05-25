@@ -15,9 +15,8 @@ return function (App $app) {
     $app->get('/logout', [UserController::class, 'logout'])->setName('logout')->add(new AuthMiddleware());
 
     $app->post('/user', [UserController::class, 'newUser'])->setName('newUser');
+    
     $app->get('/user', [UserController::class, 'getUserInfo'])->setName('userInfo')->add(new AuthMiddleware());
-
-    $app->get('/log', [LoggerController::class, 'check_log'])->setName('loggertest');
 
    
 };
