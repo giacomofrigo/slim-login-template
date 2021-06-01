@@ -8,8 +8,9 @@ final class AccessForbiddenException extends BaseException
 {
     public function __construct(
         string $message = "You are not allowed to access this resource", 
-        int $returncode = 403,
-        array $errors = []
+        array $errors = [],
+        int $returncode = 403
+        
     ){
         parent::__construct($message, $returncode, $errors);
 

@@ -27,6 +27,11 @@ class User
      */
     protected $password;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $role;
+
     public function getId()
     {
         return $this->id;
@@ -51,6 +56,17 @@ class User
     {
         $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
+
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+
 
 
     public function toArray() {

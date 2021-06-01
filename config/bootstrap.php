@@ -1,13 +1,19 @@
 <?php
 
+use App\Exception\SettingsErrorException;
 use DI\ContainerBuilder;
 use DI\Bridge\Slim\Bridge as SlimAppFactory;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
 // Load .env file
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
+if (is_file(__DIR__ . '/../.env')){
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+    $dotenv->load();
+}else{
+    die("no .env file is found");
+}
+
 
 session_start();
 

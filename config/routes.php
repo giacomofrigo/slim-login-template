@@ -16,7 +16,7 @@ return function (App $app) {
 
     $app->post('/user', [UserController::class, 'newUser'])->setName('newUser');
     
-    $app->get('/user', [UserController::class, 'getUserInfo'])->setName('userInfo')->add(new AuthMiddleware());
+    $app->get('/user', [UserController::class, 'getUserInfo'])->setName('userInfo')->add(new AuthMiddleware(["professor"]));
 
    
 };
