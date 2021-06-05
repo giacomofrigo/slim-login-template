@@ -32,6 +32,12 @@ class User
      */
     protected $role;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $is_active;
+
+
     public function getId()
     {
         return $this->id;
@@ -67,6 +73,15 @@ class User
         $this->role = $role;
     }
 
+    public function isActive()
+    {
+        return $this->is_active;
+    }
+
+    public function setActive($active)
+    {
+        $this->is_active = $active;
+    }
 
 
     public function toArray() {

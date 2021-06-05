@@ -10,8 +10,9 @@ final class LoginFailedException extends BaseException
 {
     public function __construct(
         string $message = "Login failed", 
-        int $returncode = 500,
-        array $errors = []
+        array $errors = [],
+        int $returncode = 500
+        
     ){
         parent::__construct($message, $returncode, $errors);
 

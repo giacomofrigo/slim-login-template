@@ -85,6 +85,10 @@ final class UserService extends BaseService
             $this->logger->debug($user->getPassword());
         }
         
+        if ($user->isActive() != 1){
+            throw new LoginFailedException("Login failed", ["user active" => False]);
+        }
+
         if (!(password_verify($data['password'], $user->getPassword()))){
             $this->logger->warning(sprintf("Login failed with username %s, wrong password", $data['username']));
             throw new LoginFailedException();

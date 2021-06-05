@@ -28,6 +28,11 @@ final class AuthMiddleware{
     {
         
         if (isset($_SESSION['user'])) {
+
+            if ((!(isset($_SESSION['user']['is_active']))) || ($_SESSION['user']['is_active'] != 1)){
+                throw new AccessForbiddenException("You are not allowed to access this resource", ["user active" => False]);
+            }
+
             if (empty($this->roles)){
                 $response = $handler->handle($request);
                 return $response;
