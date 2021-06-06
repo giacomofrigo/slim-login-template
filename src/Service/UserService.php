@@ -27,6 +27,7 @@ final class UserService extends BaseService
         $user = new User();
         $user->setUsername($data['username']);
         $user->setPassword($data['password']);
+        $user->setRole($data['role']);
 
         $this->em->persist($user);
         $this->em->flush();
