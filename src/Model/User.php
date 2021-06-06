@@ -28,15 +28,14 @@ class User
     protected $password;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=false)
      */
     protected $role;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=false, options={"default": 1})
      */
-    protected $is_active;
-
+    protected $is_active = 1;
 
     public function getId()
     {
