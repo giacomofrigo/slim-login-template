@@ -57,6 +57,14 @@ final class UserController extends BaseController
     }
 
     public function logout(Request $request, Response $response): Response {
+        
+        if (!(isset($_SESSION['user']))){
+            $response->getBody()->write(json_encode(['success' => true]));
+            return $response->withHeader('Content-type', 'application/json');
+        }
+        
+        $this->logger->debug("User %s requested logout", $_SESSION['user']['username']);
+        
         $user = $_SESSION['user'];
         unset($_SESSION['user']);
         session_regenerate_id();
